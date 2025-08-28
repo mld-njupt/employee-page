@@ -1,0 +1,34 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-theme: #005eff; /* 定义主色 */
+  --background: #fff;
+  --card: #fff;
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --muted: #f7faff;
+  --muted-foreground: #64748b;
+  --border: #e2e8f0;
+  --accent: #e6f3ff;
+  --accent-foreground: #1e40af;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+.text-muted-foreground {
+  color: var(--muted-foreground);
+}
+.bg-muted {
+  background-color: var(--muted);
+}
+.hover-accent:hover {
+  background: var(--accent);
+}
+.hover-foreground:hover {
+  color: var(--accent-foreground);
+}
+* {
+  border-color: var(--border);
+  outline-color: var(--color-theme);
+}
