@@ -8,7 +8,9 @@ const { TextArea } = Input;
 
 export default function AboutCard(props: { employee: Employee | undefined }) {
   const { employee } = props;
-  const [about, setAbout] = useState("");
+  const [about, setAbout] = useState(
+    "Passionate software engineer with 8+ years of experience in full-stack development. Specializing in React, Node.js, and cloud architecture. Love building scalable solutions and mentoring junior developers."
+  );
   useEffect(() => {
     if (employee) {
       setAbout(employee.about ? employee.about : "");

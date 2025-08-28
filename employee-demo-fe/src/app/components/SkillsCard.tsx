@@ -112,7 +112,20 @@ function EditContent(props: ContentProps) {
 }
 export default function SkillsCard(props: { employee: Employee | undefined }) {
   const { employee } = props;
-  const [tags, setTags] = useState([""]);
+  const [tags, setTags] = useState([
+    "JavaScript",
+    "TypeScript",
+    "React",
+    "Node.js",
+    "Python",
+    "AWS",
+    "Docker",
+    "PostgreSQL",
+    "GraphQL",
+    "Git",
+    "Agile Development",
+    "Team Leadership",
+  ]);
   useEffect(() => {
     if (employee) {
       setTags(employee.skills);

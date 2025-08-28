@@ -14,9 +14,25 @@ export default function ExperienceCard(props: {
   const { employee } = props;
   const [experiences, setExperiences] = useState<Experience[]>([
     {
-      company: "",
-      position: "",
-      description: "",
+      company: "TechCorp Inc.",
+      position: "Senior Software Engineer",
+
+      description:
+        "Lead development of core platform features serving 1M+ users. Architected microservices infrastructure and mentored team of 5 engineers.",
+    },
+    {
+      company: "StartupXYZ",
+      position: "Full Stack Developer",
+
+      description:
+        "Built customer-facing web application from scratch using React and Node.js. Implemented CI/CD pipeline and reduced deployment time by 70%.",
+    },
+    {
+      company: "WebDev Solutions",
+      position: "Frontend Developer",
+
+      description:
+        "Developed responsive websites and web applications for various clients. Collaborated with design team to implement pixel-perfect UI components.",
     },
   ]);
   useEffect(() => {

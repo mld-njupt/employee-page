@@ -79,17 +79,17 @@ export default function MainCard(props: { employee: Employee | undefined }) {
   const { employee } = props;
   const [isEditing, setIsEditing] = useState(false);
   const [formData, setFormData] = useState<FormData>({
-    firstName: "",
-    lastName: "",
-    email: "",
-    phone: "",
-    title: "",
-    department: "",
-    location: "",
+    firstName: "Sarah",
+    lastName: "Johnson",
+    email: "sarah.johnson@company.com",
+    phone: "+1 (555) 123-4567",
+    title: "Senior Software Engineer",
+    department: "Engineering",
+    location: "San Francisco, CA",
     socialLinks: {
-      linkedin: "",
-      github: "",
-      website: "",
+      linkedin: "https://linkedin.com/in/sarahjohnson",
+      github: "https://github.com/sarahjohnson",
+      website: "https://sarahjohnson.dev",
     },
   });
   // const [form] = Form.useForm<FormData>();
