@@ -9,7 +9,7 @@ import {
   MapPin,
   Pencil,
 } from "lucide-react";
-import { employeeService } from "../services/employeeApi";
+import { Employee, employeeService } from "../services/employeeApi";
 
 interface SocialLinks {
   linkedin: string;
@@ -75,7 +75,8 @@ function LinkButton({ href, label }: LinkButtonProps) {
   );
 }
 
-export default function MainCard() {
+export default function MainCard(props: { employee: Employee | undefined }) {
+  const { employee } = props;
   const [isEditing, setIsEditing] = useState(false);
   const [formData, setFormData] = useState<FormData>({
     firstName: "",
@@ -113,32 +114,25 @@ export default function MainCard() {
     });
   };
   useEffect(() => {
-    try {
-      const stored = localStorage.getItem("employee");
-      if (stored) {
-        const employee = JSON.parse(stored);
-        // 只取 formData 需要的字段
-        const newFormData: FormData = {
-          firstName: employee.firstName || "",
-          lastName: employee.lastName || "",
-          email: employee.email || "",
-          phone: employee.phone || "",
-          title: employee.title || "",
-          department: employee.department || "",
-          location: employee.location || "",
-          socialLinks: {
-            linkedin: employee.socialLinks?.linkedin || "",
-            github: employee.socialLinks?.github || "",
-            website: employee.socialLinks?.website || "",
-          },
-        };
-
-        setFormData(newFormData);
-      }
-    } catch (err) {
-      console.error("Failed to parse employee from localStorage", err);
+    if (employee) {
+      // 只取 formData 需要的字段
+      const newFormData: FormData = {
+        firstName: employee.firstName || "",
+        lastName: employee.lastName || "",
+        email: employee.email || "",
+        phone: employee.phone || "",
+        title: employee.title || "",
+        department: employee.department || "",
+        location: employee.location || "",
+        socialLinks: {
+          linkedin: employee.socialLinks?.linkedin || "",
+          github: employee.socialLinks?.github || "",
+          website: employee.socialLinks?.website || "",
+        },
+      };
+      setFormData(newFormData);
     }
-  }, []);
+  }, [employee]);
   return (
     <div className="flex flex-wrap bg-white text-card-foreground p-8 rounded-xl border shadow-lg border-gray-200 gap-8">
       <div className=" text-white text-4xl bg-theme rounded-full justify-center items-center flex w-32 h-32 border-4 border-gray-100 shadow-lg">

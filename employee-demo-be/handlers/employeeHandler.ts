@@ -44,15 +44,15 @@ export async function updateEmployee(id: string, data: Partial<Employee>) {
       "start_date",
       "about",
       "social_links",
-      "skills"
+      "skills",
     ]) {
       if (data[key as keyof Employee] !== undefined) {
         fields.push(`${key} = ?`);
-        values.push(
-          key === "social_links"||"skills"
-            ? JSON.stringify(data[key as keyof Employee])
-            : data[key as keyof Employee]
-        );
+        if (key === "social_links" || key === "skills") {
+          values.push(JSON.stringify(data[key as keyof Employee]));
+        } else {
+          values.push(data[key as keyof Employee]);
+        }
       }
     }
     if (fields.length) {

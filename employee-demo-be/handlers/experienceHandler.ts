@@ -45,8 +45,8 @@ export async function updateExperiences(
           [
             employeeId,
             exp.company,
-            exp.position,
-            exp.start_date,
+            exp.position||null,
+            exp.start_date||null,
             exp.end_date || null,
             0,
             exp.description || null,

@@ -3,6 +3,7 @@ import EditableCard from "./EditableCard";
 import EditAndDelCard from "./EditAndDelCard";
 import { GraduationCap } from "lucide-react";
 import RecordCard from "./RecordCard";
+import { Employee } from "../services/employeeApi";
 
 interface Education {
   degree: string;
@@ -10,8 +11,10 @@ interface Education {
   field: string;
 }
 
-export default function EducationCard() {
-  // 模拟数据，后面可替换成 API fetch
+export default function EducationCard(props: {
+  employee: Employee | undefined;
+}) {
+  const { employee } = props;
   const [educations, setEducations] = useState<Education[]>([
     {
       degree: "Bachelor of Science in Computer Science",
@@ -20,22 +23,16 @@ export default function EducationCard() {
     },
   ]);
   useEffect(() => {
-    try {
-      const stored = localStorage.getItem("employee");
-      if (stored) {
-        const employee = JSON.parse(stored);
-        const filteredEducation = employee.educations.map((exp: any) => ({
-          degree: exp.degree,
-          institution: exp.institution,
-          field: exp.field,
-        }));
+    if (employee) {
+      const filteredEducation = employee.educations.map((exp: any) => ({
+        degree: exp.degree,
+        institution: exp.institution,
+        field: exp.field,
+      }));
 
-        setEducations(filteredEducation);
-      }
-    } catch (err) {
-      console.error("Failed to parse employee from localStorage", err);
+      setEducations(filteredEducation);
     }
-  }, []);
+  }, [employee]);
   return (
     <RecordCard
       title="Education"

@@ -80,7 +80,7 @@ export default function RecordCard<T extends Record<string, any>>({
         />
       )}
       onSave={(data) => {
-        title === "experience"
+        title === "Experience"
           ? // eslint-disable-next-line @typescript-eslint/no-explicit-any
             employeeService.updateWorkExperiences("1", data.data as any)
           : // eslint-disable-next-line @typescript-eslint/no-explicit-any

@@ -11,8 +11,8 @@ export interface Employee {
   profileImage?: string;
   about?: string;
   skills: string[];
-  experience?: WorkExperience[];
-  education: Education[];
+  experiences?: WorkExperience[];
+  educations: Education[];
   socialLinks?: SocialLinks;
 }
 

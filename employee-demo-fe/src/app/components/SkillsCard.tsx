@@ -4,7 +4,7 @@ import { Award } from "lucide-react";
 
 import { Button, Input, Tag, ConfigProvider } from "antd";
 import { TweenOneGroup } from "rc-tween-one";
-import { employeeService } from "../services/employeeApi";
+import { Employee, employeeService } from "../services/employeeApi";
 
 interface ContentProps {
   tags: string[];
@@ -110,20 +110,14 @@ function EditContent(props: ContentProps) {
     </>
   );
 }
-export default function SkillsCard() {
+export default function SkillsCard(props: { employee: Employee | undefined }) {
+  const { employee } = props;
   const [tags, setTags] = useState([""]);
   useEffect(() => {
-    try {
-      const stored = localStorage.getItem("employee");
-      if (stored) {
-        const employee = JSON.parse(stored);
-        // 只取 formData 需要的字段
-        setTags(employee.skills);
-      }
-    } catch (err) {
-      console.error("Failed to parse employee from localStorage", err);
+    if (employee) {
+      setTags(employee.skills);
     }
-  }, []);
+  }, [employee]);
   return (
     <EditableCard<{ skills: string[] }>
       logo={<Award className="w-4 h-4 text-theme" />}

@@ -2,23 +2,18 @@ import EditableCard from "./EditableCard";
 import { User } from "lucide-react";
 import { Input } from "antd";
 import { useEffect, useState } from "react";
-import { employeeService } from "../services/employeeApi";
+import { Employee, employeeService } from "../services/employeeApi";
 
 const { TextArea } = Input;
 
-export default function AboutCard() {
+export default function AboutCard(props: { employee: Employee | undefined }) {
+  const { employee } = props;
   const [about, setAbout] = useState("");
   useEffect(() => {
-    try {
-      const stored = localStorage.getItem("employee");
-      if (stored) {
-        const employee = JSON.parse(stored);
-        setAbout(employee.about);
-      }
-    } catch (err) {
-      console.error("Failed to parse employee from localStorage", err);
+    if (employee) {
+      setAbout(employee.about ? employee.about : "");
     }
-  }, []);
+  }, [employee]);
   return (
     <EditableCard<{ about: string }>
       logo={<User className="w-4 h-4 text-theme" />}
