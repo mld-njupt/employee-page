@@ -25,7 +25,7 @@ export const mockEmployee: Employee = {
     'Agile Development',
     'Team Leadership'
   ],
-  experience: [
+  experiences: [
     {
       id: '1',
       company: 'TechCorp Inc.',
@@ -53,7 +53,7 @@ export const mockEmployee: Employee = {
       description: 'Developed responsive websites and web applications for various clients. Collaborated with design team to implement pixel-perfect UI components.'
     }
   ],
-  education: [
+  educations: [
     {
       id: '1',
       institution: 'University of California, Berkeley',
