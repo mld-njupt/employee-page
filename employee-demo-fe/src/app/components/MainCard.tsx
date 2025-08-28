@@ -134,12 +134,12 @@ export default function MainCard(props: { employee: Employee | undefined }) {
     }
   }, [employee]);
   return (
-    <div className="flex flex-wrap bg-white text-card-foreground p-8 rounded-xl border shadow-lg border-gray-200 gap-8">
-      <div className=" text-white text-4xl bg-theme rounded-full justify-center items-center flex w-32 h-32 border-4 border-gray-100 shadow-lg">
+    <div className="grid grid-cols-1 lg:grid-cols-6 bg-white text-card-foreground p-8 rounded-xl border shadow-lg border-gray-200 gap-8">
+      <div className="col-span-1 text-white text-4xl bg-theme rounded-full justify-center items-center flex w-32 h-32 border-4 border-gray-100 shadow-lg">
         <span>SJ</span>
       </div>
       {!isEditing && (
-        <div className="grow">
+        <div className="lg:col-span-5">
           <div className="flex justify-between">
             <div>
               <h1 className="text-4xl font-bold mb-2 text-gray-900">
@@ -214,7 +214,7 @@ export default function MainCard(props: { employee: Employee | undefined }) {
         </div>
       )}
       {isEditing && (
-        <div className="grow min-w-0 [max-width:calc(100%-8rem-2rem)]">
+        <div className="lg:col-span-5">
           <Form
             // form={form}
             layout="vertical"
