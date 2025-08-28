@@ -44,7 +44,7 @@ export interface SocialLinks {
 }
 
 export class EmployeeService {
-  private baseUrl = "http://127.0.0.1:3000/api/employees";
+  private baseUrl = "http://106.52.62.34:3000/api/employees";
 
   async getEmployee(id: string): Promise<Employee> {
     const response = await fetch(`${this.baseUrl}/${id}`);
